@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {CSS2DRenderer} from "three/examples/jsm/renderers/CSS2DRenderer.js";
+import {CSS2DRenderer} from "three-css2drender";
 import {UtilsMixin} from "./utils";
 import {addAxisLabels} from "./labels";
 
@@ -144,21 +144,8 @@ const OrbitControlsMixin = (superclass) => class extends superclass {
     initSecondAxes() {
         const length = 100;
         const containerDimension = 100;
-
-        this.renderer2 = this.getWebGLRenderer({alpha: true});
-        this.renderer2.setClearColor("#FFFFFF", 0);
-        this.renderer2.setSize(containerDimension, containerDimension);
-        this.renderer2.domElement.style.position = 'absolute';
-        this.renderer2.domElement.style.right = '10px';
-        this.container.prepend(this.renderer2.domElement);
-        //For axis labels
-        this.renderer2CSS2D = new CSS2DRenderer();
-        this.renderer2CSS2D.setSize(containerDimension, containerDimension);
-        this.renderer2CSS2D.domElement.style.position = 'absolute';
-        this.renderer2CSS2D.domElement.style.right = '10px';
-        this.renderer2CSS2D.domElement.style.pointerEvents = 'none';
-        this.container.prepend(this.renderer2CSS2D.domElement);
-
+        this.initRenderer2();
+        this.initRendered2CSS2D();
         //axis label
         const coordX = { x: length * 1.2, y: 0, z: 0 }
         const coordY = { x: 0, y: length * 1.2, z: 0 }
@@ -190,6 +177,25 @@ const OrbitControlsMixin = (superclass) => class extends superclass {
         secondAxesGroup.add(labelZ);
         this.scene2.secondAxesGroup = secondAxesGroup;
         console.log(this.scene2);
+    }
+
+    initRenderer2() {
+        this.renderer2 = this.getWebGLRenderer({alpha: true});
+        this.renderer2.setClearColor("#FFFFFF", 0);
+        this.renderer2.setSize(containerDimension, containerDimension);
+        this.renderer2.domElement.style.position = 'absolute';
+        this.renderer2.domElement.style.right = '10px';
+        this.container.prepend(this.renderer2.domElement);
+
+    }
+
+    initRendered2CSS2D() {
+        this.renderer2CSS2D = new CSS2DRenderer();
+        this.renderer2CSS2D.setSize(containerDimension, containerDimension);
+        this.renderer2CSS2D.domElement.style.position = 'absolute';
+        this.renderer2CSS2D.domElement.style.right = '10px';
+        this.renderer2CSS2D.domElement.style.pointerEvents = 'none';
+        this.container.prepend(this.renderer2CSS2D.domElement);
     }
 
     updateSecondAxes() {
