@@ -1,14 +1,17 @@
-import {CSS2DObject} from "three-css2drender"
+//import {CSS2DObject} from "three-css2drender"
+import {CSS2DObject} from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
-export const addAxisLabels = function(symbol, coord, color, background) {
+/*
+ * Mixin containing the logic for dealing with text labels.
+ */
+export const addAxisLabels = function(symbol, coordinate, textColor, backgroundColor) {
     const text = document.createElement('div');
     text.className ='label';
-    text.style.color = color;
-    text.style.backgroundColor = background;
+    text.style.color = textColor;
+    text.style.backgroundColor = backgroundColor;
     text.textContent = symbol;
     const label = new CSS2DObject( text );
-    label.position.copy(coord);
+    label.position.copy(coordinate);
 
     return label;
 }
-
