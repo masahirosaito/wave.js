@@ -20,7 +20,7 @@
     "homepage": "https://github.com/Exabyte-io/wave",
     "dependencies": {
         "@babel/cli": "7.0.0",
-        "@babel/core": "7.0.0",
+        "@babel/core": "^7.7.7",
         "@babel/plugin-proposal-class-properties": "7.0.0",
         "@babel/polyfill": "7.0.0",
         "@babel/preset-env": "7.0.0",
@@ -40,7 +40,7 @@
         "sprintf-js": "^1.1.2",
         "static-kdtree": "^1.0.2",
         "sweetalert": "^2.1.2",
-        "three": "^0.111.0",
+        "three": "0.111.0",
         "three-css2drender": "^1.0.0",
         "three-orbit-controls": "^82.1.0",
         "three-transform-controls": "^1.0.4",

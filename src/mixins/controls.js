@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {CSS2DRenderer} from "three/examples/jsm/renderers/CSS2DRenderer.js";
+import * as CSS2D from "three/examples/jsm/renderers/CSS2DRenderer";
 
 import {UtilsMixin} from "./utils";
 import {addAxisLabels} from "./labels";
@@ -149,14 +149,14 @@ const OrbitControlsMixin = (superclass) => class extends superclass {
         this.initRendered2CSS2D();
 
         // for axis label
-        const labelcoordinateX = { x: length * 1.2, y: 0, z: 0 }
-        const labelcoordinateY = { x: 0, y: length * 1.2, z: 0 }
-        const labelcoordinateZ = { x: 0, y: 0, z: length * 1.2 }
+        const labelcoordinateX = { x: length * 1.2, y: 0, z: 0 };
+        const labelcoordinateY = { x: 0, y: length * 1.2, z: 0 };
+        const labelcoordinateZ = { x: 0, y: 0, z: length * 1.2 };
         const [labelX, labelY, labelZ] = [
             new addAxisLabels('X', labelcoordinateX, this.settings.labelColor),
             new addAxisLabels('Y', labelcoordinateY, this.settings.labelColor),
             new addAxisLabels('Z', labelcoordinateZ, this.settings.labelColor)
-        ]
+        ];
 
         const origin = new TV3(0, 0, 0);
         const [x, y, z] = [
@@ -185,7 +185,7 @@ const OrbitControlsMixin = (superclass) => class extends superclass {
     }
 
     initRendered2CSS2D() {
-        this.renderer2CSS2D = new CSS2DRenderer();
+        this.renderer2CSS2D = new CSS2D.CSS2DRenderer ();
         this.renderer2CSS2D.setSize(this.containerDimension, this.containerDimension);
         this.renderer2CSS2D.domElement.style.position = 'absolute';
         this.renderer2CSS2D.domElement.style.right = '10px';
@@ -208,9 +208,10 @@ const OrbitControlsMixin = (superclass) => class extends superclass {
 
     hideSecondAxes() {
         this.scene2.remove(this.scene2.secondAxesGroup);
+        /*
         while (this.renderer2CSS2D.domElement.firstChild) {
             this.renderer2CSS2D.domElement.removeChild(this.renderer2CSS2D.domElement.firstChild);
-        }
+        }*/
     }
 
     /*
