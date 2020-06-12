@@ -1,6 +1,7 @@
 import * as THREE from "three";
-import {CSS2DRenderer} from "three/examples/jsm/renderers/CSS2DRenderer.js"
 import {UtilsMixin} from "./utils";
+//import {CSS2DRenderer} from "three/examples/jsm/renderers/CSS2DRenderer.js";
+import {CSS2DRenderer} from "../threejs-example/CSS2DRenderer.js";
 import {addAxisLabels} from "./labels";
 
 const OrbitControls = require('three-orbit-controls')(THREE);
