@@ -1,4 +1,4 @@
-import {CSS2DObject} from "three-css2drender";
+import {CSS2DObject} from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
 /*
  * Mixin containing the logic for dealing with text labels.
